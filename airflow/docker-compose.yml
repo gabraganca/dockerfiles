@@ -54,5 +54,17 @@ services:
     volumes:
         - pgdata:/var/lib/postgresql/data
 
+  upgrade-db:
+    <<: *common-variables
+    image: apache/airflow:1.10.12-python3.8
+    volumes:
+      - ./wait-for-it.sh:/opt/airflow/wait-for-it.sh
+    entrypoint:
+      - ./wait-for-it.sh
+      - postgres:5432
+      - --
+      - airflow
+      - upgradedb
+
 volumes:
   pgdata:
