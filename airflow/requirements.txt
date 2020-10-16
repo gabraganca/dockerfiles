@@ -1,0 +1,1 @@
+boto3==1.15.16 # Used as an example. Feel free to remove if you do not need it.
